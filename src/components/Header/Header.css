@@ -1,0 +1,12 @@
+.header { 
+    background-color: white;
+    padding: 1rem;
+}
+
+.header .navlink {
+    text-decoration: none;
+    background-color: white;
+    color: rgb(174, 214, 241);
+    font-weight: 700;
+    font-size: 1.5rem;
+}

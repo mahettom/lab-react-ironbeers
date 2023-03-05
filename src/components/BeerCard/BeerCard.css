@@ -1,0 +1,16 @@
+.beer-img {
+    max-height: 10rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.link {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.beer-description {
+    display: flex;
+    flex-direction: column;
+    line-height: 0rem;
+}
