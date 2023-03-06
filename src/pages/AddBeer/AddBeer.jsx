@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
@@ -10,7 +9,7 @@ const AddBeer = () => {
     const [description, setDescription] = useState('')
     const [first_brewed, setFirst_brewed] = useState('')
     const [brewers_tips, setBrewers_tips] = useState('')
-    const [attenuation_level, setAttenuation_level] = useState()
+    const [attenuation_level, setAttenuation_level] = useState(0)
     const [contributed_by, setContributed_by] = useState('')
 
     const handleSubmit = async (e) => {
@@ -25,10 +24,24 @@ const AddBeer = () => {
             attenuation_level,
             contributed_by,
         }
-        await axios.post('https://ih-beers-api2.herokuapp.com/beers/new')
-            .then((response) => {
 
-            })
+        try {
+            await axios.post(
+                'https://ih-beers-api2.herokuapp.com/beers/new',
+                beerToAdd
+            )
+
+            setName('')
+            setTagline('')
+            setDescription('')
+            setFirst_brewed('')
+            setBrewers_tips('')
+            setAttenuation_level(0)
+            setContributed_by('')
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
@@ -50,6 +63,7 @@ const AddBeer = () => {
                 <input type='text' name='attenuation_level' value={attenuation_level} placeholder="her attenuation level ..." onChange={(e) => setAttenuation_level(e.target.value)} />
 
                 <input type='text' name='contributed_by' value={contributed_by} placeholder="contributor ..." onChange={(e) => setContributed_by(e.target.value)} />
+                <button>Add beer</button>
             </div>
         </form>
     )
